@@ -1,2 +1,2 @@
-# khan_robot
-Basic ROS Implementation for Rover5 Platform using Raspberry Pi
+# turtle_robot
+Basic ROS Implementation for turtle platform.
