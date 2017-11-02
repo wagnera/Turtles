@@ -30,12 +30,12 @@ turtle_velocity_controller:
   linear:
     x:
       has_velocity_limits    : true
-      max_velocity           : 10.0   # m/s
+      max_velocity           : 5.0   # m/s
       has_acceleration_limits: true
-      max_acceleration       : 3.0   # m/s^2
+      max_acceleration       : 10.0   # m/s^2
   angular:
     z:
       has_velocity_limits    : true
-      max_velocity           : 10.0   # rad/s
+      max_velocity           : 8.0   # rad/s
       has_acceleration_limits: true
-      max_acceleration       : 6.0   # rad/s^2
+      max_acceleration       : 20.0   # rad/s^2
