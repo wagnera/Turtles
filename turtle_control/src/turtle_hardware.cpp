@@ -73,15 +73,21 @@ void TurtleHardware::copyJointsFromHardware()
   boost::mutex::scoped_lock feedback_msg_lock(feedback_msg_mutex_, boost::try_to_lock);
       if (feedback_msg_.header.frame_id == "l")
     {
-      joints_[0].position = feedback_msg_.measured_position;
-      joints_[0].velocity = feedback_msg_.measured_velocity;
+      joints_[0].position = feedback_msg_.measured_position/20;
+      joints_[0].velocity = feedback_msg_.measured_velocity/20;
       joints_[0].effort = 0;  // TODO(mikepurvis): determine this from amperage data.
+      joints_[2].position = feedback_msg_.measured_position/20;
+      joints_[2].velocity = feedback_msg_.measured_velocity/20;
+      joints_[2].effort = 0;  // TODO(mikepurvis): determine this from amperage data.
     }
      if (feedback_msg_.header.frame_id == "r")
     {
       joints_[1].position = feedback_msg_.measured_position/20;
       joints_[1].velocity = feedback_msg_.measured_velocity/20;
       joints_[1].effort = 0;  // TODO(mikepurvis): determine this from amperage data.
+      joints_[3].position = feedback_msg_.measured_position/20;
+      joints_[3].velocity = feedback_msg_.measured_velocity/20;
+      joints_[3].effort = 0;  // TODO(mikepurvis): determine this from amperage data.
     }
   }
 
