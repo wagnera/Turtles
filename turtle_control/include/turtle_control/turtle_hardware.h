@@ -83,8 +83,10 @@ private:
   joints_[4];
 
   // This pointer is set from the ROS thread.
-  roboteq_msgs::Feedback feedback_msg_;
-  boost::mutex feedback_msg_mutex_;
+  roboteq_msgs::Feedback left_feedback_msg_;
+  roboteq_msgs::Feedback right_feedback_msg_;
+  boost::mutex left_feedback_msg_mutex_;
+  boost::mutex right_feedback_msg_mutex_;
 };
 
 }  // namespace turtle_base

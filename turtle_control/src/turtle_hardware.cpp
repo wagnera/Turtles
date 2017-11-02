@@ -54,7 +54,7 @@ TurtleHardware::TurtleHardware()
   registerInterface(&joint_state_interface_);
   registerInterface(&velocity_joint_interface_);
 
-  left_feedback_sub_ = nh_.subscribe("left/feedback", 1, &TurtleHardware::feedbackCallback_left, this);
+  left_feedback_sub_ = nh_.subscribe("/left/feedback", 1, &TurtleHardware::feedbackCallback_left, this);
   right_feedback_sub_ = nh_.subscribe("right/feedback", 1, &TurtleHardware::feedbackCallback_right, this);
   left_motor_pub = nh_.advertise<roboteq_msgs::Command>("left/cmd", 1000);
   right_motor_pub = nh_.advertise<roboteq_msgs::Command>("right/cmd", 1000);
@@ -70,25 +70,21 @@ TurtleHardware::TurtleHardware()
  */
 void TurtleHardware::copyJointsFromHardware()
 {
-  boost::mutex::scoped_lock feedback_msg_lock(feedback_msg_mutex_, boost::try_to_lock);
-      if (feedback_msg_.header.frame_id == "l")
-    {
-      joints_[0].position = -feedback_msg_.measured_position/20;
-      joints_[0].velocity = -feedback_msg_.measured_velocity/20;
+  boost::mutex::scoped_lock left_feedback_msg_lock(left_feedback_msg_mutex_, boost::try_to_lock);
+  boost::mutex::scoped_lock right_feedback_msg_lock(right_feedback_msg_mutex_, boost::try_to_lock);
+      joints_[0].position = -(left_feedback_msg_.measured_position/20);
+      joints_[0].velocity = -(left_feedback_msg_.measured_velocity/20);
       joints_[0].effort = 0;  // TODO(mikepurvis): determine this from amperage data.
-      joints_[2].position = -feedback_msg_.measured_position/20;
-      joints_[2].velocity = -feedback_msg_.measured_velocity/20;
+      joints_[2].position = -(left_feedback_msg_.measured_position/20);
+      joints_[2].velocity = -(left_feedback_msg_.measured_velocity/20);
       joints_[2].effort = 0;  // TODO(mikepurvis): determine this from amperage data.
-    }
-     if (feedback_msg_.header.frame_id == "r")
-    {
-      joints_[1].position = feedback_msg_.measured_position/20;
-      joints_[1].velocity = feedback_msg_.measured_velocity/20;
+      joints_[1].position = right_feedback_msg_.measured_position/20;
+      joints_[1].velocity = right_feedback_msg_.measured_velocity/20;
       joints_[1].effort = 0;  // TODO(mikepurvis): determine this from amperage data.
-      joints_[3].position = feedback_msg_.measured_position/20;
-      joints_[3].velocity = feedback_msg_.measured_velocity/20;
+      joints_[3].position = right_feedback_msg_.measured_position/20;
+      joints_[3].velocity = right_feedback_msg_.measured_velocity/20;
       joints_[3].effort = 0;  // TODO(mikepurvis): determine this from amperage data.
-    }
+
   }
 
 /**
@@ -113,9 +109,8 @@ void TurtleHardware::feedbackCallback_left(const roboteq_msgs::Feedback msg)
 {
   // Update the feedback message pointer to point to the current message. Block
   // until the control thread is not using the lock.
-  boost::mutex::scoped_lock lock(feedback_msg_mutex_);
-  feedback_msg_ = msg;
-  feedback_msg_.header.frame_id="l";
+  boost::mutex::scoped_lock lock(left_feedback_msg_mutex_);
+  left_feedback_msg_ = msg;
 
 }
 
@@ -123,9 +118,8 @@ void TurtleHardware::feedbackCallback_right(const roboteq_msgs::Feedback msg)
 {
   // Update the feedback message pointer to point to the current message. Block
   // until the control thread is not using the lock.
-  boost::mutex::scoped_lock lock(feedback_msg_mutex_);
-  feedback_msg_ = msg;
- feedback_msg_.header.frame_id="r";
+  boost::mutex::scoped_lock lock(right_feedback_msg_mutex_);
+  right_feedback_msg_ = msg;
 
 }
 
