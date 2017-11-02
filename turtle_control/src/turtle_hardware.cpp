@@ -79,8 +79,8 @@ void TurtleHardware::copyJointsFromHardware()
     }
      if (feedback_msg_.header.frame_id == "r")
     {
-      joints_[1].position = feedback_msg_.measured_position;
-      joints_[1].velocity = feedback_msg_.measured_velocity;
+      joints_[1].position = feedback_msg_.measured_position/20;
+      joints_[1].velocity = feedback_msg_.measured_velocity/20;
       joints_[1].effort = 0;  // TODO(mikepurvis): determine this from amperage data.
     }
   }
@@ -96,8 +96,8 @@ void TurtleHardware::publishDriveFromController()
   roboteq_msgs::Command right_msg;
   left_msg.mode=0;
   right_msg.mode=0;
-	left_msg.setpoint=(-joints_[0].velocity_command);
-	right_msg.setpoint=(joints_[1].velocity_command);
+	left_msg.setpoint=(-joints_[0].velocity_command)*.9091;
+	right_msg.setpoint=(joints_[1].velocity_command)*.9091;
   left_motor_pub.publish(left_msg);
   right_motor_pub.publish(right_msg);
 
