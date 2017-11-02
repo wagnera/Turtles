@@ -6,4 +6,6 @@
   <!-- For a real robot, these parameters should be set for tuning individual motors -->
   <include file="$(find turtle_control)/launch/hardware.launch" />
   <include file="$(find turtle_control)/launch/control.launch" />
+ <node name="base_master_discovery" pkg="master_discovery_fkie" type="master_discovery" />
+  <node name="base_comms_sync" pkg="master_sync_fkie" type="master_sync"/>
 </launch>
