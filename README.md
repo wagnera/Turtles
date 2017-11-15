@@ -11,7 +11,7 @@ Required packages:
 joy, teleop-twist-joy, ros-control, ros-controlers
 
 To install required pacakges:
-`sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kientic-ros-control ros-kientic-ros-controllers`
+`sudo apt-get install ros-kinetic-joy ros-kinetic-teleop-twist-joy ros-kinetic-ros-control ros-kinetic-ros-controllers`
 
 Also need roboteq driver. For this we are using a fork of the g/roboteq package.
 
