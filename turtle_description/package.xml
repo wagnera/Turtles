@@ -1,18 +1,16 @@
 <?xml version="1.0"?>
 <package>
-  <name>khan_description</name>
-  <version>0.0.2</version>
-  <description>KHAN slip/steer URDF description used in ME-2984 SS:Intro into Robotics</description>
+  <name>turtle_description</name>
+  <version>0.0.1</version>
+  <description>turtle slip/steer URDF description used for Turtle robotic platform in DYSMAC</description>
 
-  <maintainer email="jpz@vt.edu">Jason Ziglar</maintainer>
+  <maintainer email="wagnera@vt.edu">Anthony Wagner</maintainer>
 
   <license>BSD 3-Clause</license>
 
-  <url type="website">https://github.com/FleetRobotics/khan_robot</url>
+  <url type="website">https://github.com/wagnera/Turtles</url>
 
-  <author email="csknabe@gmail.com">Coleman Knabe</author>
-  <author email="jpz@vt.edu">Jason Ziglar</author>
-  <author email="mishra42@gmail.com">John "Semi" Seminatore</author>
+  <author email="wagnera@vt.edu">Anthony Wagner</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 
