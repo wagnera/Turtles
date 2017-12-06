@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  
+ <node name="map_image_publisher" pkg="base_station_turtle" type="publish_map_imagery" output="screen">
+  <param name="image_filename" value="$(find base_station_turtle)/images/durham_test1.png"/>
+</node>
+</launch>

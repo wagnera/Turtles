@@ -23,16 +23,16 @@ OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTE
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
-<robot name="khan_decorations" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="turtle_decorations" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="khan_decorate">
+  <xacro:macro name="turtle_decorate">
 
-    <!-- Spawn Khan chassis -->
+    <!-- Spawn turtle chassis -->
     <link name="top_chassis_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://khan_description/meshes/top_chassis.stl" />
+          <mesh filename="package://turtle_description/meshes/top_chassis.stl" />
         </geometry>
       </visual>
     </link>
@@ -47,7 +47,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <link name="user_rail_link">
       <visual>
         <geometry>
-          <mesh filename="package://khan_description/meshes/user_rail.stl" />
+          <mesh filename="package://turtle_description/meshes/user_rail.stl" />
         </geometry>
       </visual>
     </link>
@@ -63,7 +63,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <link name="front_bumper_link">
       <visual>
         <geometry>
-          <mesh filename="package://khan_description/meshes/bumper.stl" />
+          <mesh filename="package://turtle_description/meshes/bumper.stl" />
         </geometry>
       </visual>
     </link>
@@ -79,7 +79,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <link name="rear_bumper_link">
       <visual>
         <geometry>
-          <mesh filename="package://khan_description/meshes/bumper.stl" />
+          <mesh filename="package://turtle_description/meshes/bumper.stl" />
         </geometry>
       </visual>
     </link>
@@ -91,19 +91,19 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
       <child link="rear_bumper_link" />
     </joint>
 
-    <xacro:if value="$(optenv KHAN_TOP_PLATE_ENABLED true)">
+    <xacro:if value="$(optenv turtle_TOP_PLATE_ENABLED true)">
       <!-- Spawn the top plate -->
       <link name="top_plate_link">
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://khan_description/meshes/top_plate.stl" />
+            <mesh filename="package://turtle_description/meshes/top_plate.stl" />
           </geometry>
         </visual>
         <collision>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
-            <mesh filename="package://khan_description/meshes/top_plate.stl" />
+            <mesh filename="package://turtle_description/meshes/top_plate.stl" />
           </geometry>
         </collision>
         <collision>
