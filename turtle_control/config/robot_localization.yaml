@@ -1,0 +1,16 @@
+#Configuation for robot odometry EKF
+#
+frequency: 50
+
+odom0: /turtle_velocity_controller/odom
+odom0_config: [true, true, true,
+               false, false, false,
+               true, true, true,
+               false, false, true,
+               false, false, false]
+odom0_differential: true
+
+odom_frame: odom
+base_link_frame: base_link
+map_frame: map
+world_frame: map
