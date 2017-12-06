@@ -98,8 +98,8 @@ void TurtleHardware::publishDriveFromController()
   roboteq_msgs::Command right_msg;
   left_msg.mode=0;
   right_msg.mode=0;
-	left_msg.setpoint=(-joints_[0].velocity_command)*.9091;
-	right_msg.setpoint=(joints_[1].velocity_command)*.9091;
+	left_msg.setpoint=(-joints_[0].velocity_command)*.9091*20;
+	right_msg.setpoint=(joints_[1].velocity_command)*.9091*20;
   left_motor_pub.publish(left_msg);
   right_motor_pub.publish(right_msg);
 
